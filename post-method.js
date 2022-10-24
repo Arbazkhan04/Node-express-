@@ -9,9 +9,17 @@ const server=http.createServer((req,res)=>{
 })
 function submitUserName(req,res ){
     res.setHeader('Content-type','text/html')
-    return res.end(`<h1>good</h1>
+   
     
-    `)
+    //recived request body
+    //and save it in file
+    //redirect to home page
+
+    res.statusCode=320;
+    res.setHeader('location','/')
+     return res.end()
+    
+    
 }
 function setHomePage(req,res){
     res.setHeader('Content-Type','text/html');
