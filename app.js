@@ -1,20 +1,17 @@
-// const http=require('http');
-// const server=http.createServer((req,res)=>{
-//     res.setHeader('Content-type','application/json');
-//     res.write('<html>');
-//     res.write('<head><title>Dear khan</title><head>');
-//     res.write('<body><h1>AssalamAlaikum</h1></body>');
-//     res.end('</html>');
+const http=require('http');
+const server=http.createServer((req,res)=>{
+  if(req.url==='/'){ //if url is home page i mean mt then it will response to the reque
+    return setHomepage(req,res)
+  }
+
     
-// })
-// server.listen(3000)
-
-const http = require('http');
-
-const requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
+})
+function setHomepage(req,res){
+  res.setHeader('Content-type','text/html');
+  res.write('<html>');
+  res.write('<head><title>Dear khan</title><head>');
+  res.write('<body><h1>AssalamAlaikum2</h1></body>');
+  return  res.end('</html>');
 }
+server.listen(3000)
 
-const server = http.createServer(requestListener);
-server.listen(8080);
