@@ -1,4 +1,5 @@
 const http=require('http')
+const fs= require('fs')
 const server=http.createServer((req,res)=>{
      if(req.url==='/'){
         return setHomePage(req,res)
@@ -9,7 +10,20 @@ const server=http.createServer((req,res)=>{
 })
 function submitUserName(req,res ){
     res.setHeader('Content-type','text/html')
-   
+    const body=[];
+    req.on('data', (chunks)=>{
+      body.push(chunks)
+
+    })
+    req.on('end',()=>{
+       console.log(body); //through this we will only get array on utc 
+       //we hava to make it a string 
+       const requestBody=Buffer.concat(body).toString();
+       console.log(requestBody);//now it will convert our utc into string 
+       const userName2=requestBody.split('=')[1];
+       fs.writeFileSync('username.txt',userName2)
+
+    })
     
     //recived request body
     //and save it in file
