@@ -13,5 +13,7 @@ function setHomepage(req,res){
   res.write('<body><h1>AssalamAlaikum2</h1></body>');
   return  res.end('</html>');
 }
-server.listen(3000)
+server.listen(3000, ()=>{
+  console.log('Server is running at port 3000....')
+})
 
