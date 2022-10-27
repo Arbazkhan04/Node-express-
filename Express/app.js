@@ -1,4 +1,8 @@
-const express=require('express')
+const express=require('express');
+
+const path=require('path')
+const AdminRouter=require('./router/admin')
+const homeRouter=require('./router/home')
 const bodyParser=require('body-parser')
 const app=express() 
 
@@ -9,8 +13,11 @@ app.use((req,res,next)=>{
     console.log('logged message')
     next()
 })
-
-
+app.use('/user' , AdminRouter)
+app.use(homeRouter)
+app.use((req,res)=>{
+    res.status(404).sendFile(path.join(__dirname, 'view','404.html'))
+})
 // app.use('/',(req,res,next)=>{
    
 //   res.send('first middle ware')
@@ -24,27 +31,8 @@ app.use((req,res,next)=>{
 
 // solution for this 
 
- app.get('/user', (req,res,next)=>{
-    res.send('this is the user page ');
- })
- 
- app.get('/user/add',(req,res,next)=>{
-
-    res.send(`<form method="POST">
-    <input type="text" name="username">
-    <button>Add</button> 
-      </form>`);
- 
- })
- app.post('/user/add', (req,res)=>{
-    console.log(req.body.username);
-    res.redirect('/')
- })
 
 
-app.get('/', (req,res,next)=>{
-    res.send('this is the home page') //now it is work fine
-})
 
 
 
