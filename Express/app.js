@@ -1,4 +1,5 @@
 const express=require('express');
+const rootDir=require('./utlis/path')
 
 const path=require('path')
 const AdminRouter=require('./router/admin')
@@ -6,6 +7,8 @@ const homeRouter=require('./router/home')
 const bodyParser=require('body-parser')
 const app=express() 
 
+app.use(express.static(path.join(__dirname,'public')))
+app.use( '/css',express.static(path.join(rootDir,'node_modules','bootstrap','dist','css')))
 app.use(bodyParser.urlencoded({extended:false}))
 
 
