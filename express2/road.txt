@@ -1,0 +1,46 @@
+How express application work and also how to create express folder structure
+
+first install express into your application
+commmand----> npm install express
+
+then install nodemon  ---->Why ?
+|____ Because we don't want to write node app.js what nodemon will do it will 
+automatically dectect all the changes that you will do in your applocation
+
+commmand -----> npm install nodemon
+
+|-----> then go to the package.json and change the script and remove the test 
+
+-------> "start":"nodemon <root file name> "
+
+once your server start into the localhost 
+
+Folder structure:
+
+app.js
+|
+|-------->Router  ----> router.js
+|
+|--------->Controller-----> controller.js
+|    
+|---------->configration----->myDataBaseConfigration.json
+|
+|----------->Modal---------->MyDataBaseModel.js
+|
+|----------->middleware------->MyFirstMiddleware.js
+|
+|-------------------------------------->end<------------------------|
+
+How Folder Strature Works?
+
+app.js----->This is the entry point of my application
+
+Router----->Router will makes a route for our application that will be require into
+our root applicatio------->app.js(Everything will be called inside the app.js)
+
+Controller----->Will handle inocming and outgoing request 
+
+
+Model--------> Here we will create a modal for our application through Mongooose 
+Schema 
+

@@ -7,11 +7,17 @@ const homeRouter=require('./router/home')
 const bodyParser=require('body-parser')
 const app=express() 
 
+//ejs
+
+app.set('view-engine','ejs'); //engien for ejs
+app.set('views', path.join(__dirname, 'views')); //routing for ejs
+
+// stactic files
 app.use(express.static(path.join(__dirname,'public')))
 app.use( '/css',express.static(path.join(rootDir,'node_modules','bootstrap','dist','css')))
 app.use(bodyParser.urlencoded({extended:false}))
 
-
+//routing
 app.use((req,res,next)=>{
     console.log('logged message')
     next()
@@ -19,7 +25,10 @@ app.use((req,res,next)=>{
 app.use('/user' , AdminRouter)
 app.use(homeRouter)
 app.use((req,res)=>{
-    res.status(404).sendFile(path.join(__dirname, 'view','404.html'))
+    // const viewData={
+    //     titlePage:"page not found"
+    // }
+    res.status(404).render('404');
 })
 // app.use('/',(req,res,next)=>{
    
@@ -38,7 +47,7 @@ app.use((req,res)=>{
 
 
 
-
+//server
 
 app.listen(3000,()=>{
     console.log("Server is started at the port 3000...");

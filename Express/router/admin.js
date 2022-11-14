@@ -6,12 +6,12 @@ const router=express.Router();
 
  
   router.get('/', (req,res,next)=>{
-    res.sendFile(path.join(rootDir,'view','user.html'));
+    res.sendFile(path.join(rootDir,'views','user.html'));
   })
  
  router.get('/add',(req,res,next)=>{
 
-    res.sendFile(path.join(rootDir,'view','adduser.html'));
+    res.sendFile(path.join(rootDir,'views','adduser.html'));
  
  })
  router.post('/user/add', (req,res)=>{
